@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Erfan Hamidi - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="apple-gradient">
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+      <div class="pokeball"></div>
+      <h3 class="mt-4 text-gray-600">Loading Portfolio...</h3>
+    </div>
+
+    <!-- Floating Background Icons -->
+    <div
+      class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden"
+    >
+      <i
+        class="fas fa-code text-gray-200 text-4xl absolute top-1/4 left-10 floating-icon"
+      ></i>
+      <i
+        class="fab fa-react text-gray-200 text-5xl absolute top-1/3 right-20 spinning-icon"
+      ></i>
+      <i
+        class="fab fa-js text-gray-200 text-6xl absolute bottom-1/4 left-1/4 floating-icon"
+        style="animation-delay: 0.5s"
+      ></i>
+      <i
+        class="fab fa-python text-gray-200 text-5xl absolute top-1/2 right-1/3 spinning-icon"
+        style="animation-delay: 1s"
+      ></i>
+      <i
+        class="fas fa-database text-gray-200 text-4xl absolute bottom-20 right-1/4 floating-icon"
+        style="animation-delay: 1.5s"
+      ></i>
+      <i
+        class="fab fa-html5 text-gray-200 text-5xl absolute top-20 left-1/3 moving-icon"
+      ></i>
+      <i
+        class="fab fa-css3-alt text-gray-200 text-5xl absolute bottom-40 right-10 moving-icon"
+        style="animation-delay: 2s"
+      ></i>
+    </div>
+
+    <!-- Main Content -->
+    <div class="relative z-10">
+      <!-- Header -->
+      <header class="apple-dark py-6">
+        <div class="container mx-auto px-4">
+          <div class="flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Erfan Hamidi</h1>
+            <nav>
+              <ul class="flex space-x-6">
+                <li>
+                  <a href="#about" class="hover:text-gray-300 transition"
+                    >About</a
+                  >
+                </li>
+                <li>
+                  <a href="#skills" class="hover:text-gray-300 transition"
+                    >Skills</a
+                  >
+                </li>
+                <li>
+                  <a href="#experience" class="hover:text-gray-300 transition"
+                    >Experience</a
+                  >
+                </li>
+                <li>
+                  <a href="#education" class="hover:text-gray-300 transition"
+                    >Education</a
+                  >
+                </li>
+                <li>
+                  <a href="#contact" class="hover:text-gray-300 transition"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <section class="py-20">
+        <div class="container mx-auto px-4 text-center">
+          <div class="max-w-3xl mx-auto">
+            <h1 class="text-5xl font-bold mb-6">Erfan Hamidi</h1>
+            <p class="text-xl text-gray-600 mb-8">
+              Full Stack Developer | Software Engineer
+            </p>
+            <div class="flex justify-center space-x-4 mb-12">
+              <a
+                href="https://www.linkedin.com/in/erfan-hamidi-657256223"
+                target="_blank"
+                class="btn-hover-effect bg-blue-600 text-white px-6 py-3 rounded-full flex items-center"
+              >
+                <i class="fab fa-linkedin-in mr-2"></i> LinkedIn
+              </a>
+              <a
+                href="https://github.com/erfanhm"
+                target="_blank"
+                class="btn-hover-effect bg-gray-800 text-white px-6 py-3 rounded-full flex items-center"
+              >
+                <i class="fab fa-github mr-2"></i> GitHub
+              </a>
+              <a
+                href="mailto:erfanhamidi077@gmail.com"
+                class="btn-hover-effect bg-red-500 text-white px-6 py-3 rounded-full flex items-center"
+              >
+                <i class="fas fa-envelope mr-2"></i> Email
+              </a>
+            </div>
+            <p class="text-gray-600">(226) 506 – 9635 | Toronto, Canada</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- About Section -->
+      <section id="about" class="py-16">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
+          <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-xl shadow-md p-8 card-hover">
+              <p class="text-gray-700 mb-4">
+                I'm a passionate Full Stack Developer with extensive experience
+                in building secure and responsive web applications. My expertise
+                spans across multiple programming languages and frameworks,
+                allowing me to create comprehensive solutions from frontend to
+                backend.
+              </p>
+              <p class="text-gray-700">
+                With a strong foundation in both electrical computer engineering
+                and software engineering, I bring a unique perspective to
+                problem-solving and application development. I'm particularly
+                skilled in eCommerce solutions, API integrations, and
+                performance optimization.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Skills Section -->
+      <section id="skills" class="py-16">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-12">Skills</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Programming Languages -->
+            <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+              <h3 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-code mr-2 apple-blue"></i> Programming
+                Languages
+              </h3>
+              <ul class="space-y-2">
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Python
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i>
+                  JavaScript
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Java
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> C#
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Perl
+                  Scripting
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> SQL
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> PHP
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> .NET
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> HTML
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> CSS
+                </li>
+              </ul>
+            </div>
+
+            <!-- Frameworks -->
+            <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+              <h3 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-cogs mr-2 apple-blue"></i> Frameworks
+              </h3>
+              <ul class="space-y-2">
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> ReactJS
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Django
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> FastAPI
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> AWS
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i>
+                  Bootstrap
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i>
+                  Backbone.js
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> jQuery
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> RESTful
+                  APIs
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> SOAP
+                  Webservices
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> JWT Auth
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Apache
+                </li>
+              </ul>
+            </div>
+
+            <!-- Other Skills -->
+            <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+              <h3 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-tools mr-2 apple-blue"></i> Other Skills
+              </h3>
+              <h4 class="font-medium mt-2">Conceptual Skills:</h4>
+              <ul class="space-y-2">
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> UI/UX
+                  Design
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Agile
+                  Development
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> SEO
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Unit
+                  Testing and Debugging
+                </li>
+              </ul>
+
+              <h4 class="font-medium mt-4">Tools:</h4>
+              <ul class="space-y-2">
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Figma
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Postman
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> MS Excel
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i>
+                  Photoshop
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> After
+                  Effects
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i>
+                  CorelDraw
+                </li>
+              </ul>
+
+              <h4 class="font-medium mt-4">Soft Skills:</h4>
+              <ul class="space-y-2">
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i>
+                  Detail-oriented
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i>
+                  Collaboration and communication
+                </li>
+                <li class="flex items-center">
+                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Problem
+                  solving
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Experience Section -->
+      <section id="experience" class="py-16">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-12">Experience</h2>
+
+          <div class="max-w-4xl mx-auto space-y-8">
+            <!-- Freelance -->
+            <div class="bg-white rounded-xl shadow-md p-8 card-hover">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="text-xl font-semibold">
+                    Full Stack Web Developer
+                  </h3>
+                  <p class="text-gray-600">Freelance Opportunities, Canada</p>
+                </div>
+                <span
+                  class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm"
+                  >08/2024 – Present</span
+                >
+              </div>
+              <ul class="mt-4 space-y-2">
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span
+                    >Built secure and responsive web applications using Python,
+                    ReactJS, and SQL.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span
+                    >Integrated RESTful APIs and implemented JWT-based Single
+                    Sign-On authentication.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span
+                    >Developed eCommerce features and dashboards with a focus on
+                    SEO and usability.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span
+                    >Conducted root cause analysis by reviewing application logs
+                    to debug and optimize performance.</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Soodbar -->
+            <div class="bg-white rounded-xl shadow-md p-8 card-hover">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="text-xl font-semibold">Full Stack Developer</h3>
+                  <p class="text-gray-600">Soodbar Co., Tehran, Iran</p>
+                </div>
+                <span
+                  class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm"
+                  >11/2019 – 05/2023</span
+                >
+              </div>
+              <ul class="mt-4 space-y-2">
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span
+                    >Developed backend systems with Python, Java and C#, and
+                    built responsive frontends with ReactJS, Bootstrap,
+                    jQuery.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span
+                    >Implemented Single Sign-On (SSO) and integrated RESTful
+                    APIs across platforms.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span
+                    >Reviewed logs for root cause analysis and resolved
+                    application and payment issues.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span
+                    >Worked in Linux environments and managed deployments on
+                    Apache servers.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span
+                    >Supported hardware troubleshooting (printers, scanners,
+                    cash drawers) and interacted with customers for technical
+                    support.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span
+                    >Applied eCommerce best practices, optimized SQL queries,
+                    and contributed to Agile development cycles.</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Delphi -->
+            <div class="bg-white rounded-xl shadow-md p-8 card-hover">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="text-xl font-semibold">Software Developer</h3>
+                  <p class="text-gray-600">Delphi Auto parts, Tehran, Iran</p>
+                </div>
+                <span
+                  class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm"
+                  >06/2016 – 08/2019</span
+                >
+              </div>
+              <ul class="mt-4 space-y-2">
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span
+                    >Built web tools and backend APIs for an eCommerce platform
+                    using Python and JavaScript.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span
+                    >Created real-time dashboards and maintained SQL
+                    databases.</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span
+                    >Provided customer support, including phone interactions and
+                    peripheral device troubleshooting.</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Education Section -->
+      <section id="education" class="py-16">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-12">
+            Education & Certificates
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <!-- Education -->
+            <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+              <h3 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-graduation-cap mr-2 apple-blue"></i> Education
+              </h3>
+              <div class="space-y-4">
+                <div>
+                  <h4 class="font-medium">
+                    Master of Electrical Computer Engineering
+                  </h4>
+                  <p class="text-gray-600">University of Windsor, Canada</p>
+                  <p class="text-sm text-gray-500">2023-2024</p>
+                </div>
+                <div>
+                  <h4 class="font-medium">
+                    Bachelor of Science, Software Engineering
+                  </h4>
+                  <p class="text-gray-600">
+                    Azad University of Tehran Central, Iran
+                  </p>
+                  <p class="text-sm text-gray-500">2019-2022</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Certificates -->
+            <div class="bg-white rounded-xl shadow-md p-6 card-hover">
+              <h3 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-certificate mr-2 apple-blue"></i> Certificates
+              </h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <i class="fas fa-award text-yellow-500 mt-1 mr-2"></i>
+                  <div>
+                    <span>Certified SQL Practitioner (Udemy)</span>
+                    <p class="text-sm text-gray-500">2025</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-award text-yellow-500 mt-1 mr-2"></i>
+                  <div>
+                    <span
+                      >Certificate of Completion in Python Programming
+                      (MFT)</span
+                    >
+                    <p class="text-sm text-gray-500">2021</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-award text-yellow-500 mt-1 mr-2"></i>
+                  <div>
+                    <span
+                      >Programming and Web Developing with ReactJS (MFT)</span
+                    >
+                    <p class="text-sm text-gray-500">2021</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-award text-yellow-500 mt-1 mr-2"></i>
+                  <div>
+                    <span
+                      >Programming in HTML5 with JavaScript and CSS3 (MFT)</span
+                    >
+                    <p class="text-sm text-gray-500">2020</p>
+                  </div>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-award text-yellow-500 mt-1 mr-2"></i>
+                  <div>
+                    <span
+                      >Microsoft Certified Solutions Associate (MCSA)
+                      (MFT)</span
+                    >
+                    <p class="text-sm text-gray-500">2019</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider"></div>
+
+      <!-- Contact Section -->
+      <section id="contact" class="py-16 apple-dark">
+        <div class="container mx-auto px-4">
+          <div class="max-w-3xl mx-auto">
+            <div class="mt-12 text-center">
+              <h2 class="text-xl font-semibold mb-4">Reach me directly at</h2>
+              <div class="flex justify-center space-x-6">
+                <a
+                  href="https://www.linkedin.com/in/erfan-hamidi-657256223"
+                  target="_blank"
+                  class="minimal-contact-btn text-2xl"
+                >
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a
+                  href="https://github.com/erfanhm"
+                  target="_blank"
+                  class="minimal-contact-btn text-2xl"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+                <a
+                  href="mailto:erfanhamidi077@gmail.com"
+                  class="minimal-contact-btn text-2xl"
+                >
+                  <i class="fas fa-envelope"></i>
+                </a>
+                <a href="tel:2265069635" class="minimal-contact-btn text-2xl">
+                  <i class="fas fa-phone"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="py-6 apple-dark">
+        <div class="container mx-auto px-4 text-center">
+          <p>&copy; 2024 Erfan Hamidi. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
