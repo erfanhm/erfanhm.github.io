@@ -1,10 +1,33 @@
-// Hide loader after 2 seconds
+// Spider-Man loader animation
+      const spiderman = document.getElementById("spiderman");
+      const loaderText = document.getElementById("loaderText");
+      const loader = document.getElementById("loader");
+
+      // Small delay then drop Spider-Man in
       setTimeout(() => {
-        document.getElementById("loader").style.opacity = "0";
+        spiderman.style.animation =
+          "spiderDescend 1.3s cubic-bezier(0.34, 1.4, 0.64, 1) forwards";
+      }, 150);
+
+      // Show text once he lands
+      setTimeout(() => {
+        loaderText.style.opacity = "1";
+      }, 1550);
+
+      // Shoot him back up
+      setTimeout(() => {
+        loaderText.style.opacity = "0";
+        spiderman.style.animation =
+          "spiderAscend 0.65s cubic-bezier(0.55, 0, 0.67, 1) forwards";
+      }, 2500);
+
+      // Fade out the loader overlay
+      setTimeout(() => {
+        loader.style.opacity = "0";
         setTimeout(() => {
-          document.getElementById("loader").style.display = "none";
-        }, 500);
-      }, 2000);
+          loader.style.display = "none";
+        }, 400);
+      }, 3180);
 
       // Hamburger menu functionality
       const hamburger = document.getElementById("hamburger");

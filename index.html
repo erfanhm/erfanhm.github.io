@@ -18,8 +18,78 @@
   <body class="apple-gradient">
     <!-- Loading Screen -->
     <div class="loader" id="loader">
-      <div class="pokeball"></div>
-      <h3 class="mt-4 text-gray-600">Loading Portfolio...</h3>
+      <div class="web-rope"></div>
+      <div class="spiderman-figure" id="spiderman">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 160" width="110" height="176">
+          <!-- Web attachment point at top center -->
+          <circle cx="50" cy="4" r="3" fill="#777"/>
+
+          <!-- Left arm reaching up to web -->
+          <line x1="46" y1="58" x2="50" y2="4" stroke="#CC0000" stroke-width="8" stroke-linecap="round"/>
+          <!-- Right arm reaching up to web -->
+          <line x1="54" y1="58" x2="50" y2="4" stroke="#CC0000" stroke-width="8" stroke-linecap="round"/>
+          <!-- Hand grip -->
+          <circle cx="50" cy="4" r="5" fill="#CC0000"/>
+
+          <!-- Head -->
+          <circle cx="50" cy="38" r="23" fill="#CC0000"/>
+
+          <!-- Web pattern on head -->
+          <g stroke="#990000" stroke-width="1.2" fill="none" opacity="0.6">
+            <line x1="50" y1="15" x2="50" y2="61"/>
+            <line x1="27" y1="38" x2="73" y2="38"/>
+            <line x1="34" y1="19" x2="66" y2="57"/>
+            <line x1="66" y1="19" x2="34" y2="57"/>
+            <ellipse cx="50" cy="38" rx="8" ry="6"/>
+            <ellipse cx="50" cy="38" rx="16" ry="12"/>
+          </g>
+
+          <!-- White eyes -->
+          <ellipse cx="41" cy="33" rx="10" ry="8" fill="white" transform="rotate(-18,41,33)"/>
+          <ellipse cx="59" cy="33" rx="10" ry="8" fill="white" transform="rotate(18,59,33)"/>
+
+          <!-- Neck -->
+          <rect x="44" y="57" width="12" height="10" rx="3" fill="#CC0000"/>
+
+          <!-- Torso red upper -->
+          <ellipse cx="50" cy="82" rx="20" ry="24" fill="#CC0000"/>
+
+          <!-- Blue midsection -->
+          <ellipse cx="50" cy="102" rx="18" ry="12" fill="#003399"/>
+
+          <!-- Web pattern on torso -->
+          <g stroke="#990000" stroke-width="1" fill="none" opacity="0.4">
+            <line x1="50" y1="65" x2="50" y2="110"/>
+            <line x1="30" y1="82" x2="70" y2="82"/>
+            <line x1="36" y1="67" x2="64" y2="97"/>
+            <line x1="64" y1="67" x2="36" y2="97"/>
+            <ellipse cx="50" cy="82" rx="10" ry="8"/>
+          </g>
+
+          <!-- Spider emblem on chest -->
+          <g transform="translate(50,80)" opacity="0.72">
+            <ellipse cx="0" cy="2" rx="4" ry="6" fill="#111"/>
+            <ellipse cx="0" cy="-4" rx="2.5" ry="3.5" fill="#111"/>
+            <line x1="-4" y1="-2" x2="-11" y2="-7" stroke="#111" stroke-width="1.4"/>
+            <line x1="-4" y1="2"  x2="-12" y2="3"  stroke="#111" stroke-width="1.4"/>
+            <line x1="-3" y1="6"  x2="-9"  y2="10" stroke="#111" stroke-width="1.4"/>
+            <line x1="4"  y1="-2" x2="11"  y2="-7" stroke="#111" stroke-width="1.4"/>
+            <line x1="4"  y1="2"  x2="12"  y2="3"  stroke="#111" stroke-width="1.4"/>
+            <line x1="3"  y1="6"  x2="9"   y2="10" stroke="#111" stroke-width="1.4"/>
+          </g>
+
+          <!-- Left leg hanging down -->
+          <path d="M42 110 Q33 134 29 154" stroke="#003399" stroke-width="11" stroke-linecap="round" fill="none"/>
+          <!-- Right leg hanging down -->
+          <path d="M58 110 Q67 134 71 154" stroke="#003399" stroke-width="11" stroke-linecap="round" fill="none"/>
+
+          <!-- Left red boot -->
+          <ellipse cx="27" cy="156" rx="9" ry="6" fill="#CC0000" transform="rotate(-10,27,156)"/>
+          <!-- Right red boot -->
+          <ellipse cx="73" cy="156" rx="9" ry="6" fill="#CC0000" transform="rotate(10,73,156)"/>
+        </svg>
+      </div>
+      <p class="loader-text" id="loaderText">Your friendly neighborhood developer...</p>
     </div>
 
     <!-- Floating Background Icons -->
