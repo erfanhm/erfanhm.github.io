@@ -1,33 +1,38 @@
-// Spider-Man loader animation
-      const spiderman = document.getElementById("spiderman");
+// Spider-Man image loader
+      const wrapper    = document.getElementById("spidermanWrapper");
       const loaderText = document.getElementById("loaderText");
-      const loader = document.getElementById("loader");
+      const loader     = document.getElementById("loader");
 
-      // Small delay then drop Spider-Man in
+      // Phase 1 – web fans in from the top (0.75s)
       setTimeout(() => {
-        spiderman.style.animation =
-          "spiderDescend 1.3s cubic-bezier(0.34, 1.4, 0.64, 1) forwards";
+        wrapper.style.animation = "webReveal 0.75s ease-out forwards";
       }, 150);
 
-      // Show text once he lands
+      // Phase 2 – Spider-Man drops down the thread (1.1s, bouncy)
+      setTimeout(() => {
+        wrapper.style.animation =
+          "spiderDrop 1.1s cubic-bezier(0.34, 1.5, 0.64, 1) forwards";
+      }, 1000);  // 150 + 750 + 100 gap
+
+      // Show text once he's hanging
       setTimeout(() => {
         loaderText.style.opacity = "1";
-      }, 1550);
+      }, 2200);
 
-      // Shoot him back up
+      // Phase 3 – shoot him back up (0.6s)
       setTimeout(() => {
         loaderText.style.opacity = "0";
-        spiderman.style.animation =
-          "spiderAscend 0.65s cubic-bezier(0.55, 0, 0.67, 1) forwards";
-      }, 2500);
+        wrapper.style.animation =
+          "spiderAscend 0.6s cubic-bezier(0.55, 0, 0.67, 1) forwards";
+      }, 3000);
 
-      // Fade out the loader overlay
+      // Fade out the whole loader
       setTimeout(() => {
         loader.style.opacity = "0";
         setTimeout(() => {
           loader.style.display = "none";
-        }, 400);
-      }, 3180);
+        }, 500);
+      }, 3650);
 
       // Hamburger menu functionality
       const hamburger = document.getElementById("hamburger");
