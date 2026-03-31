@@ -18,10 +18,29 @@
   <body class="apple-gradient">
     <!-- Loading Screen -->
     <div class="loader" id="loader">
-      <div class="spiderman-wrapper" id="spidermanWrapper">
-        <img src="spiderman.jpg" alt="" draggable="false" />
+      <div class="aurora-bg">
+        <div class="aurora-orb orb-1"></div>
+        <div class="aurora-orb orb-2"></div>
+        <div class="aurora-orb orb-3"></div>
       </div>
-      <p class="loader-text" id="loaderText">Your friendly neighborhood developer...</p>
+      <canvas id="loaderCanvas"></canvas>
+      <div class="scan-line"></div>
+      <div class="loader-content">
+        <div class="orb-system">
+          <div class="orbit orbit-1"><div class="orbit-dot"></div></div>
+          <div class="orbit orbit-2"><div class="orbit-dot"></div></div>
+          <div class="core-glow"></div>
+        </div>
+        <div class="loader-name" id="loaderName"></div>
+        <div class="loader-tagline" id="loaderTagline"></div>
+        <div class="progress-wrap">
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+            <div class="progress-shine"></div>
+          </div>
+          <span class="progress-pct" id="progressPct">0%</span>
+        </div>
+      </div>
     </div>
 
     <!-- Floating Background Icons -->

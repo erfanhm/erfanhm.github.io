@@ -50,70 +50,227 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
       }
 
-      /* ── Spider-Man Image Loader ── */
+      /* ── Cyberpunk Aurora Loader ── */
       .loader {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #0d6070;   /* matches the image's teal bg */
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: #05050f;
         z-index: 9999;
-        transition: opacity 0.5s ease-out;
         overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.6s ease-out;
       }
 
-      /* The image sits anchored at the top-center */
-      .spiderman-wrapper {
+      .aurora-bg {
         position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: min(640px, 100%);
-        /* Start fully hidden; JS drives the animations */
-        clip-path: inset(0 0 100% 0);
-      }
-
-      .spiderman-wrapper img {
-        width: 100%;
-        display: block;
-        user-select: none;
+        inset: 0;
         pointer-events: none;
       }
 
-      .loader-text {
+      .aurora-orb {
         position: absolute;
-        bottom: 12%;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 0.88rem;
-        color: rgba(255, 255, 255, 0.75);
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        opacity: 0;
-        transition: opacity 0.4s ease;
-        white-space: nowrap;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.55;
+      }
+
+      .orb-1 {
+        width: 650px; height: 650px;
+        top: -200px; left: -150px;
+        background: radial-gradient(circle, #00d4ff 0%, #0055ff 50%, transparent 70%);
+        animation: orbDrift1 9s ease-in-out infinite;
+      }
+
+      .orb-2 {
+        width: 550px; height: 550px;
+        bottom: -150px; right: -100px;
+        background: radial-gradient(circle, #8b00ff 0%, #ff00cc 50%, transparent 70%);
+        animation: orbDrift2 11s ease-in-out infinite;
+      }
+
+      .orb-3 {
+        width: 420px; height: 420px;
+        top: 50%; left: 50%;
+        margin-top: -210px; margin-left: -210px;
+        background: radial-gradient(circle, #00ffcc 0%, #0066ff 50%, transparent 70%);
+        animation: orbDrift3 7s ease-in-out infinite;
+        opacity: 0.3;
+      }
+
+      @keyframes orbDrift1 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(60px, 40px) scale(1.12); }
+      }
+      @keyframes orbDrift2 {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(-50px, -30px) scale(1.08); }
+      }
+      @keyframes orbDrift3 {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+      }
+
+      #loaderCanvas {
+        position: absolute;
+        inset: 0;
+        width: 100%; height: 100%;
+        pointer-events: none;
+      }
+
+      .scan-line {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(to right, transparent, #00d4ff 50%, transparent);
+        box-shadow: 0 0 12px #00d4ff, 0 0 24px #00d4ff;
+        animation: scanMove 3.5s linear infinite;
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      @keyframes scanMove {
+        0%   { top: -2px; }
+        100% { top: 100%; }
+      }
+
+      .loader-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 26px;
+      }
+
+      .orb-system {
+        position: relative;
+        width: 120px; height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .orbit {
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid rgba(0, 212, 255, 0.3);
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+      }
+
+      .orbit-1 {
+        width: 120px; height: 120px;
+        animation: spinOrbit 3s linear infinite;
+      }
+
+      .orbit-2 {
+        width: 78px; height: 78px;
+        border-color: rgba(139, 0, 255, 0.4);
+        animation: spinOrbit 1.8s linear infinite reverse;
+      }
+
+      .orbit-dot {
+        width: 8px; height: 8px;
+        border-radius: 50%;
+        margin-top: -4px;
+        background: #00d4ff;
+        box-shadow: 0 0 8px #00d4ff, 0 0 16px #00d4ff;
+      }
+
+      .orbit-2 .orbit-dot {
+        background: #8b00ff;
+        box-shadow: 0 0 8px #8b00ff, 0 0 16px #ff00cc;
+      }
+
+      @keyframes spinOrbit {
+        from { transform: rotate(0deg); }
+        to   { transform: rotate(360deg); }
+      }
+
+      .core-glow {
+        width: 38px; height: 38px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #ffffff 0%, #00d4ff 40%, #8b00ff 80%, transparent 100%);
+        box-shadow: 0 0 18px #00d4ff, 0 0 36px #8b00ff, 0 0 60px #00d4ff;
+        animation: corePulse 1.6s ease-in-out infinite;
+      }
+
+      @keyframes corePulse {
+        0%, 100% { transform: scale(1);   box-shadow: 0 0 18px #00d4ff, 0 0 36px #8b00ff; }
+        50%       { transform: scale(1.25); box-shadow: 0 0 28px #00d4ff, 0 0 55px #8b00ff, 0 0 80px #00d4ff; }
+      }
+
+      .loader-name {
         font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+        font-size: clamp(2rem, 6vw, 3.2rem);
+        font-weight: 800;
+        letter-spacing: 0.28em;
+        color: #fff;
+        text-shadow: 0 0 18px #00d4ff, 0 0 36px #00d4ff, 0 0 70px #8b00ff;
+        min-height: 4rem;
+        text-transform: uppercase;
+        text-align: center;
       }
 
-      /* Phase 1 – web fans in from the top */
-      @keyframes webReveal {
-        0%   { clip-path: inset(0 0 100% 0); }
-        100% { clip-path: inset(0 0 65%  0); }
+      .loader-tagline {
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+        font-size: 0.68rem;
+        letter-spacing: 0.38em;
+        color: rgba(0, 212, 255, 0.65);
+        text-transform: uppercase;
+        min-height: 1rem;
+        text-align: center;
       }
 
-      /* Phase 2 – Spider-Man slides down the thread (clip-path bottom shrinks) */
-      @keyframes spiderDrop {
-        0%   { clip-path: inset(0 0 65% 0); }
-        60%  { clip-path: inset(0 0 28% 0); }   /* slight overshoot */
-        80%  { clip-path: inset(0 0 31% 0); }
-        100% { clip-path: inset(0 0 30% 0); }
+      .progress-wrap {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: min(280px, 80vw);
       }
 
-      /* Phase 3 – whole scene rockets upward */
-      @keyframes spiderAscend {
-        0%   { clip-path: inset(0 0 30% 0); transform: translateX(-50%) translateY(0);     }
-        100% { clip-path: inset(0 0 30% 0); transform: translateX(-50%) translateY(-115%); }
+      .progress-track {
+        flex: 1;
+        height: 3px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 2px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .progress-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(to right, #8b00ff, #00d4ff);
+        border-radius: 2px;
+        box-shadow: 0 0 8px #00d4ff;
+        transition: width 0.08s linear;
+      }
+
+      .progress-shine {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.45) 50%, transparent 100%);
+        animation: shineMove 1.8s linear infinite;
+      }
+
+      @keyframes shineMove {
+        0%   { transform: translateX(-100%); }
+        100% { transform: translateX(250%); }
+      }
+
+      .progress-pct {
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        color: rgba(0, 212, 255, 0.75);
+        min-width: 34px;
+        text-align: right;
       }
 
       .section-divider {

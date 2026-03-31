@@ -1,38 +1,79 @@
-// Spider-Man image loader
-      const wrapper    = document.getElementById("spidermanWrapper");
-      const loaderText = document.getElementById("loaderText");
-      const loader     = document.getElementById("loader");
+// ── Cyberpunk Aurora Loader ──
+      (function () {
+        const loader       = document.getElementById("loader");
+        const nameEl       = document.getElementById("loaderName");
+        const taglineEl    = document.getElementById("loaderTagline");
+        const progressFill = document.getElementById("progressFill");
+        const progressPct  = document.getElementById("progressPct");
+        const canvas       = document.getElementById("loaderCanvas");
+        const ctx          = canvas.getContext("2d");
 
-      // Phase 1 – web fans in from the top (0.75s)
-      setTimeout(() => {
-        wrapper.style.animation = "webReveal 0.75s ease-out forwards";
-      }, 150);
+        // Size canvas
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-      // Phase 2 – Spider-Man drops down the thread (1.1s, bouncy)
-      setTimeout(() => {
-        wrapper.style.animation =
-          "spiderDrop 1.1s cubic-bezier(0.34, 1.5, 0.64, 1) forwards";
-      }, 1000);  // 150 + 750 + 100 gap
+        // Floating particles
+        const COLORS = ["#00d4ff", "#8b00ff", "#00ffcc", "#ff00cc"];
+        const particles = Array.from({ length: 90 }, () => ({
+          x:     Math.random() * canvas.width,
+          y:     Math.random() * canvas.height,
+          r:     Math.random() * 1.6 + 0.3,
+          vx:    (Math.random() - 0.5) * 0.35,
+          vy:    -(Math.random() * 0.45 + 0.1),
+          alpha: Math.random() * 0.55 + 0.1,
+          color: COLORS[Math.floor(Math.random() * COLORS.length)],
+        }));
 
-      // Show text once he's hanging
-      setTimeout(() => {
-        loaderText.style.opacity = "1";
-      }, 2200);
+        let rafId;
+        function drawParticles() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          particles.forEach(p => {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = p.alpha;
+            ctx.fill();
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.y < -5)               { p.y = canvas.height + 5; p.x = Math.random() * canvas.width; }
+            if (p.x < -5)               p.x = canvas.width + 5;
+            if (p.x > canvas.width + 5) p.x = -5;
+          });
+          ctx.globalAlpha = 1;
+          rafId = requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
 
-      // Phase 3 – shoot him back up (0.6s)
-      setTimeout(() => {
-        loaderText.style.opacity = "0";
-        wrapper.style.animation =
-          "spiderAscend 0.6s cubic-bezier(0.55, 0, 0.67, 1) forwards";
-      }, 3000);
+        // Typewriter helper
+        function typeText(el, text, speed, cb) {
+          let i = 0;
+          el.textContent = "";
+          const t = setInterval(() => {
+            el.textContent += text[i++];
+            if (i >= text.length) { clearInterval(t); if (cb) cb(); }
+          }, speed);
+        }
 
-      // Fade out the whole loader
-      setTimeout(() => {
-        loader.style.opacity = "0";
+        // Animated progress counter
+        let pct = 0;
+        const pctInterval = setInterval(() => {
+          pct = Math.min(pct + Math.floor(Math.random() * 5) + 1, 100);
+          progressFill.style.width = pct + "%";
+          progressPct.textContent  = pct + "%";
+          if (pct >= 100) clearInterval(pctInterval);
+        }, 38);
+
+        // Sequence
+        setTimeout(() => typeText(nameEl,    "ERFAN.HM", 85), 250);
+        setTimeout(() => typeText(taglineEl, "PORTFOLIO  •  DEVELOPER  •  DESIGNER", 30), 1050);
+
+        // Fade out loader
         setTimeout(() => {
-          loader.style.display = "none";
-        }, 500);
-      }, 3650);
+          cancelAnimationFrame(rafId);
+          loader.style.opacity = "0";
+          setTimeout(() => { loader.style.display = "none"; }, 600);
+        }, 3900);
+      })();
 
       // Hamburger menu functionality
       const hamburger = document.getElementById("hamburger");
