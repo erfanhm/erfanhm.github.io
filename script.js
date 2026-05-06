@@ -191,6 +191,46 @@ if (scrollIndicator) {
   });
 }
 
+// ── Nav logo scramble effect ──
+(function () {
+  const logo = document.querySelector(".nav-logo");
+  if (!logo) return;
+
+  const original = logo.textContent;
+  const pool = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%!?><_~|";
+  let timerId = null;
+  let iter = 0;
+
+  function startScramble() {
+    clearInterval(timerId);
+    iter = 0;
+    logo.classList.add("scrambling");
+
+    timerId = setInterval(() => {
+      logo.textContent = original.split("").map((char, idx) => {
+        if (char === " ") return " ";
+        if (idx < iter / 2) return char;
+        return pool[Math.floor(Math.random() * pool.length)];
+      }).join("");
+
+      if (++iter / 2 >= original.length) {
+        clearInterval(timerId);
+        logo.textContent = original;
+        setTimeout(() => logo.classList.remove("scrambling"), 400);
+      }
+    }, 30);
+  }
+
+  function stopScramble() {
+    clearInterval(timerId);
+    logo.textContent = original;
+    logo.classList.remove("scrambling");
+  }
+
+  logo.addEventListener("mouseenter", startScramble);
+  logo.addEventListener("mouseleave", stopScramble);
+})();
+
 // ── Hero background canvas – rising code chars ──
 function initBgCanvas() {
   const canvas = document.getElementById("bgCanvas");
@@ -239,7 +279,7 @@ function initBgCanvas() {
       p.x     += p.vx;
       p.phase += p.speed;
       const a  = p.alpha * (0.5 + 0.5 * Math.sin(p.phase));
-      ctx.font      = `${p.size}px 'Courier New',monospace`;
+      ctx.font      = `${p.size}px 'JetBrains Mono','Courier New',monospace`;
       ctx.fillStyle = p.color + a.toFixed(3) + ")";
       ctx.fillText(p.char, p.x, p.y);
       if (p.y < -20) Object.assign(p, mkParticle(false));

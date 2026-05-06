@@ -130,12 +130,30 @@ body {
   justify-content: space-between;
 }
 .nav-logo {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-weight: 700;
-  font-size: 17px;
-  color: rgba(255,255,255,0.9);
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-weight: 600;
+  font-size: 16px;
+  color: rgba(255,255,255,0.92);
   text-decoration: none;
-  cursor: pointer;
+  cursor: default;
+  position: relative;
+  transition: color 0.15s ease;
+  letter-spacing: -0.01em;
+}
+.nav-logo.scrambling { color: #16a34a; }
+.nav-logo::after {
+  content: "▋";
+  color: #16a34a;
+  font-size: 13px;
+  vertical-align: middle;
+  margin-left: 1px;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+.nav-logo:hover::after,
+.nav-logo.scrambling::after {
+  opacity: 1;
+  animation: blinkCursor 0.7s step-end infinite;
 }
 .nav-links { display: flex; gap: 28px; }
 .nav-link {
