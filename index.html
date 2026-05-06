@@ -1,681 +1,463 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Erfan Hamidi - Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body class="apple-gradient">
-    <!-- Loading Screen -->
-    <div class="loader" id="loader">
-      <div class="aurora-bg">
-        <div class="aurora-orb orb-1"></div>
-        <div class="aurora-orb orb-2"></div>
-        <div class="aurora-orb orb-3"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Erfan Hamidi - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="term-window">
+      <div class="term-titlebar">
+        <span class="term-btn term-close"></span>
+        <span class="term-btn term-min"></span>
+        <span class="term-btn term-max"></span>
+        <span class="term-wintitle">erfan@portfolio — bash</span>
       </div>
-      <canvas id="loaderCanvas"></canvas>
-      <div class="scan-line"></div>
-      <div class="loader-content">
-        <div class="orb-system">
-          <div class="orbit orbit-1"><div class="orbit-dot"></div></div>
-          <div class="orbit orbit-2"><div class="orbit-dot"></div></div>
-          <div class="core-glow"></div>
+      <div class="term-body" id="termBody"></div>
+      <div class="term-footer">
+        <div class="term-bar-wrap">
+          <div class="term-bar-fill" id="termBarFill"></div>
         </div>
-        <div class="loader-name" id="loaderName"></div>
-        <div class="loader-tagline" id="loaderTagline"></div>
-        <div class="progress-wrap">
-          <div class="progress-track">
-            <div class="progress-fill" id="progressFill"></div>
-            <div class="progress-shine"></div>
-          </div>
-          <span class="progress-pct" id="progressPct">0%</span>
+        <span class="term-pct" id="termPct">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav id="mainNav" class="main-nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">Erfan Hamidi</a>
+      <div class="nav-links" id="desktopNav">
+        <a href="#about" class="nav-link" data-section="about">About</a>
+        <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+        <a href="#experience" class="nav-link" data-section="experience">Experience</a>
+        <a href="#education" class="nav-link" data-section="education">Education</a>
+        <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar-menu" id="sidebarMenu">
+    <div class="sidebar-icons">
+      <i class="fab fa-react sidebar-icon"></i>
+      <i class="fab fa-js sidebar-icon"></i>
+      <i class="fab fa-python sidebar-icon"></i>
+      <i class="fas fa-code sidebar-icon"></i>
+      <i class="fas fa-database sidebar-icon"></i>
+    </div>
+    <ul>
+      <li><a href="#about"><i class="fas fa-user"></i> About Me</a></li>
+      <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
+      <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+      <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+      <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+  </div>
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <!-- SCROLL INDICATOR -->
+  <div class="scroll-indicator" id="scrollIndicator">
+    <span>Scroll Down</span>
+    <i class="fas fa-arrow-down"></i>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero" class="hero-section">
+    <canvas id="bgCanvas" aria-hidden="true"></canvas>
+    <div class="hero-blobs" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+    </div>
+    <div class="hero-content hero-content--no-portrait">
+      <div class="hero-text">
+        <div class="open-to-work-badge reveal">🟢 Open to Work</div>
+        <h1 class="hero-title reveal delay-1">Erfan Hamidi</h1>
+        <p class="hero-subtitle reveal delay-2">Backend Engineer &amp; AI Integration</p>
+        <p class="hero-tech reveal delay-2">Java &nbsp;·&nbsp; Node.js &nbsp;·&nbsp; Python &nbsp;·&nbsp; PostgreSQL &nbsp;·&nbsp; AWS</p>
+        <p class="hero-location reveal delay-3">(226) 506-9635 &nbsp;·&nbsp; Toronto, Canada</p>
+        <div class="hero-socials reveal delay-4">
+          <a href="https://www.linkedin.com/in/erfan-hamidi-657256223" target="_blank" class="social-icon-btn" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/erfanhm" target="_blank" class="social-icon-btn" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="mailto:erfanhamidi077@gmail.com" class="social-icon-btn" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="tel:2265069635" class="social-icon-btn" aria-label="Phone">
+            <i class="fas fa-phone"></i>
+          </a>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Floating Background Icons -->
-    <div
-      class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden"
-    >
-      <i
-        class="fas fa-code text-gray-200 text-4xl absolute top-1/4 left-10 floating-icon"
-      ></i>
-      <i
-        class="fab fa-react text-gray-200 text-5xl absolute top-1/3 right-20 spinning-icon"
-      ></i>
-      <i
-        class="fab fa-js text-gray-200 text-6xl absolute bottom-1/4 left-1/4 floating-icon"
-        style="animation-delay: 0.5s"
-      ></i>
-      <i
-        class="fab fa-python text-gray-200 text-5xl absolute top-1/2 right-1/3 spinning-icon"
-        style="animation-delay: 1s"
-      ></i>
-      <i
-        class="fas fa-database text-gray-200 text-4xl absolute bottom-20 right-1/4 floating-icon"
-        style="animation-delay: 1.5s"
-      ></i>
-      <i
-        class="fab fa-html5 text-gray-200 text-5xl absolute top-20 left-1/3 moving-icon"
-      ></i>
-      <i
-        class="fab fa-css3-alt text-gray-200 text-5xl absolute bottom-40 right-10 moving-icon"
-        style="animation-delay: 2s"
-      ></i>
-    </div>
-
-    <!-- Main Content -->
-    <div class="relative z-10">
-      <!-- Header -->
-      <header class="apple-dark py-6">
-        <div class="container mx-auto px-4">
-          <div class="flex justify-between items-center">
-            <h1 class="text-2xl font-bold">Open To Work</h1>
-
-            <!-- Hamburger Menu Button -->
-            <div class="hamburger" id="hamburger">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-
-            <!-- Desktop Navigation (hidden on tablet and mobile) -->
-            <nav class="desktop-nav">
-              <ul class="flex space-x-6">
-                <li>
-                  <a class="hover:text-gray-300 transition" href="#about"
-                    >About</a
-                  >
-                </li>
-                <li>
-                  <a class="hover:text-gray-300 transition" href="#skills"
-                    >Skills</a
-                  >
-                </li>
-                <li>
-                  <a class="hover:text-gray-300 transition" href="#experience"
-                    >Experience</a
-                  >
-                </li>
-                <li>
-                  <a class="hover:text-gray-300 transition" href="#education"
-                    >Education</a
-                  >
-                </li>
-                <li>
-                  <a class="hover:text-gray-300 transition" href="#contact"
-                    >Contact</a
-                  >
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </header>
-
-      <!-- Sidebar Menu -->
-      <div class="sidebar-menu" id="sidebarMenu">
-        <div class="sidebar-icons">
-          <i class="fab fa-react sidebar-icon"></i>
-          <i class="fab fa-js sidebar-icon"></i>
-          <i class="fab fa-python sidebar-icon"></i>
-          <i class="fas fa-code sidebar-icon"></i>
-          <i class="fas fa-database sidebar-icon"></i>
-        </div>
-        <ul>
-          <li>
-            <a href="#about"> <i class="fas fa-user"></i> About Me </a>
-          </li>
-          <li>
-            <a href="#skills"> <i class="fas fa-code"></i> Skills </a>
-          </li>
-          <li>
-            <a href="#experience">
-              <i class="fas fa-briefcase"></i> Experience
-            </a>
-          </li>
-          <li>
-            <a href="#education">
-              <i class="fas fa-graduation-cap"></i> Education
-            </a>
-          </li>
-          <li>
-            <a href="#contact"> <i class="fas fa-envelope"></i> Contact </a>
-          </li>
-        </ul>
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+    <div class="about-container">
+      <div class="section-header">
+        <h2 class="section-title reveal">About Me</h2>
       </div>
-
-      <!-- Menu Overlay -->
-      <div class="menu-overlay" id="menuOverlay"></div>
-
-      <!-- Hero Section -->
-      <section class="py-20">
-        <div class="container mx-auto px-4 text-center">
-          <div class="max-w-3xl mx-auto">
-            <h1 class="text-5xl font-bold mb-6">Erfan Hamidi</h1>
-            <p class="text-xl text-gray-600 mb-8">
-              Full Stack Developer | Software Engineer
-            </p>
-            <div class="flex justify-center space-x-4 mb-12">
-              <a
-                class="btn-hover-effect bg-blue-600 text-white px-6 py-3 rounded-full flex items-center"
-                href="https://www.linkedin.com/in/erfan-hamidi-657256223"
-                target="_blank"
-              >
-                <i class="fab fa-linkedin-in mr-2"></i> LinkedIn
-              </a>
-              <a
-                class="btn-hover-effect bg-gray-800 text-white px-6 py-3 rounded-full flex items-center"
-                href="https://github.com/erfanhm"
-                target="_blank"
-              >
-                <i class="fab fa-github mr-2"></i> GitHub
-              </a>
-              <a
-                class="btn-hover-effect bg-red-500 text-white px-6 py-3 rounded-full flex items-center"
-                href="mailto:erfanhamidi077@gmail.com"
-              >
-                <i class="fas fa-envelope mr-2"></i> Email
-              </a>
-            </div>
-            <p class="text-gray-600">(226) 506 – 9635 | Toronto, Canada</p>
-          </div>
-        </div>
-      </section>
-
-      <div class="section-divider"></div>
-
-      <!-- About Section -->
-      <section class="py-16" id="about">
-        <div class="container mx-auto px-4">
-          <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
-          <div class="max-w-4xl mx-auto">
-            <div class="bg-white rounded-xl shadow-md p-8 card-hover">
-              <p class="text-gray-700 mb-4">
-                I'm a passionate Full Stack Developer with extensive experience
-                in building secure and responsive web applications. My expertise
-                spans across multiple programming languages and frameworks,
-                allowing me to create comprehensive solutions from frontend to
-                backend.
-              </p>
-              <p class="text-gray-700">
-                With a strong foundation in both electrical computer engineering
-                and software engineering, I bring a unique perspective to
-                problem-solving and application development. I'm particularly
-                skilled in eCommerce solutions, API integrations, and
-                performance optimization.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="section-divider"></div>
-
-      <!-- Skills Section -->
-      <section class="py-16" id="skills">
-        <div class="container mx-auto px-4">
-          <h2 class="text-3xl font-bold text-center mb-12">Skills</h2>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Programming Languages -->
-            <div class="bg-white rounded-xl shadow-md p-6 card-hover">
-              <h3 class="text-xl font-semibold mb-4 flex items-center">
-                <i class="fas fa-code mr-2 apple-blue"></i> Programming
-                Languages
-              </h3>
-              <ul class="space-y-2">
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Python
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i>
-                  JavaScript
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Java
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> C#
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Perl
-                  Scripting
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> SQL
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> PHP
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> .NET
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> HTML
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> CSS
-                </li>
-              </ul>
-            </div>
-
-            <!-- Frameworks -->
-            <div class="bg-white rounded-xl shadow-md p-6 card-hover">
-              <h3 class="text-xl font-semibold mb-4 flex items-center">
-                <i class="fas fa-cogs mr-2 apple-blue"></i> Frameworks
-              </h3>
-              <ul class="space-y-2">
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> ReactJS
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Django
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> FastAPI
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> AWS
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i>
-                  Bootstrap
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i>
-                  Backbone.js
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> jQuery
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> RESTful
-                  APIs
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> SOAP
-                  Webservices
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> JWT Auth
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Apache
-                </li>
-              </ul>
-            </div>
-
-            <!-- Other Skills -->
-            <div class="bg-white rounded-xl shadow-md p-6 card-hover">
-              <h3 class="text-xl font-semibold mb-4 flex items-center">
-                <i class="fas fa-tools mr-2 apple-blue"></i> Other Skills
-              </h3>
-              <h4 class="font-medium mt-2">Conceptual Skills:</h4>
-              <ul class="space-y-2">
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> UI/UX
-                  Design
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Agile
-                  Development
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> SEO
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Unit
-                  Testing and Debugging
-                </li>
-              </ul>
-              <h4 class="font-medium mt-4">Tools:</h4>
-              <ul class="space-y-2">
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Figma
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Postman
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> MS Excel
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i>
-                  Photoshop
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> After
-                  Effects
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i>
-                  CorelDraw
-                </li>
-              </ul>
-              <h4 class="font-medium mt-4">Soft Skills:</h4>
-              <ul class="space-y-2">
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i>
-                  Detail-oriented
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i>
-                  Collaboration and communication
-                </li>
-                <li class="flex items-center">
-                  <i class="fas fa-circle text-xs mr-2 apple-blue"></i> Problem
-                  solving
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="section-divider"></div>
-
-      <!-- Experience Section -->
-      <section class="py-16" id="experience">
-        <div class="container mx-auto px-4">
-          <h2 class="text-3xl font-bold text-center mb-12">Experience</h2>
-          <div class="max-w-4xl mx-auto space-y-8">
-            <!-- Freelance -->
-            <div class="bg-white rounded-xl shadow-md p-8 card-hover">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h3 class="text-xl font-semibold">
-                    Full Stack Web Developer
-                  </h3>
-                  <p class="text-gray-600">Freelance Opportunities, Canada</p>
-                </div>
-                <span
-                  class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm"
-                  >08/2024 – Present</span
-                >
-              </div>
-              <ul class="mt-4 space-y-2">
-                <li class="flex items-start">
-                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                  <span
-                    >Built secure and responsive web applications using Python,
-                    ReactJS, and SQL.</span
-                  >
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                  <span
-                    >Integrated RESTful APIs and implemented JWT-based Single
-                    Sign-On authentication.</span
-                  >
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                  <span
-                    >Developed eCommerce features and dashboards with a focus on
-                    SEO and usability.</span
-                  >
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                  <span
-                    >Conducted root cause analysis by reviewing application logs
-                    to debug and optimize performance.</span
-                  >
-                </li>
-              </ul>
-            </div>
-
-            <!-- Soodbar -->
-            <div class="bg-white rounded-xl shadow-md p-8 card-hover">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h3 class="text-xl font-semibold">Full Stack Developer</h3>
-                  <p class="text-gray-600">Soodbar Co., Tehran, Iran</p>
-                </div>
-                <span
-                  class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm"
-                  >11/2019 – 05/2023</span
-                >
-              </div>
-              <ul class="mt-4 space-y-2">
-                <li class="flex items-start">
-                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                  <span
-                    >Developed backend systems with Python, Java and C#, and
-                    built responsive frontends with ReactJS, Bootstrap,
-                    jQuery.</span
-                  >
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                  <span
-                    >Implemented Single Sign-On (SSO) and integrated RESTful
-                    APIs across platforms.</span
-                  >
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                  <span
-                    >Reviewed logs for root cause analysis and resolved
-                    application and payment issues.</span
-                  >
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                  <span
-                    >Worked in Linux environments and managed deployments on
-                    Apache servers.</span
-                  >
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                  <span
-                    >Supported hardware troubleshooting (printers, scanners,
-                    cash drawers) and interacted with customers for technical
-                    support.</span
-                  >
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                  <span
-                    >Applied eCommerce best practices, optimized SQL queries,
-                    and contributed to Agile development cycles.</span
-                  >
-                </li>
-              </ul>
-            </div>
-
-            <!-- Delphi -->
-            <div class="bg-white rounded-xl shadow-md p-8 card-hover">
-              <div class="flex justify-between items-start">
-                <div>
-                  <h3 class="text-xl font-semibold">Software Developer</h3>
-                  <p class="text-gray-600">Delphi Auto parts, Tehran, Iran</p>
-                </div>
-                <span
-                  class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm"
-                  >06/2016 – 08/2019</span
-                >
-              </div>
-              <ul class="mt-4 space-y-2">
-                <li class="flex items-start">
-                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                  <span
-                    >Built web tools and backend APIs for an eCommerce platform
-                    using Python and JavaScript.</span
-                  >
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                  <span
-                    >Created real-time dashboards and maintained SQL
-                    databases.</span
-                  >
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
-                  <span
-                    >Provided customer support, including phone interactions and
-                    peripheral device troubleshooting.</span
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="section-divider"></div>
-
-      <!-- Education Section -->
-      <section class="py-16" id="education">
-        <div class="container mx-auto px-4">
-          <h2 class="text-3xl font-bold text-center mb-12">
-            Education &amp; Certificates
-          </h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <!-- Education -->
-            <div class="bg-white rounded-xl shadow-md p-6 card-hover">
-              <h3 class="text-xl font-semibold mb-4 flex items-center">
-                <i class="fas fa-graduation-cap mr-2 apple-blue"></i> Education
-              </h3>
-              <div class="space-y-4">
-                <div>
-                  <h4 class="font-medium">
-                    Master of Electrical Computer Engineering
-                  </h4>
-                  <p class="text-gray-600">University of Windsor, Canada</p>
-                  <p class="text-sm text-gray-500">2023-2024</p>
-                </div>
-                <div>
-                  <h4 class="font-medium">
-                    Bachelor of Science, Software Engineering
-                  </h4>
-                  <p class="text-gray-600">
-                    Azad University of Tehran Central, Iran
-                  </p>
-                  <p class="text-sm text-gray-500">2019-2022</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Certificates -->
-            <div class="bg-white rounded-xl shadow-md p-6 card-hover">
-              <h3 class="text-xl font-semibold mb-4 flex items-center">
-                <i class="fas fa-certificate mr-2 apple-blue"></i> Certificates
-              </h3>
-              <ul class="space-y-3">
-                <li class="flex items-start">
-                  <i class="fas fa-award text-yellow-500 mt-1 mr-2"></i>
-                  <div>
-                    <span>Certified SQL Practitioner (Udemy)</span>
-                    <p class="text-sm text-gray-500">2025</p>
-                  </div>
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-award text-yellow-500 mt-1 mr-2"></i>
-                  <div>
-                    <span
-                      >Certificate of Completion in Python Programming
-                      (MFT)</span
-                    >
-                    <p class="text-sm text-gray-500">2021</p>
-                  </div>
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-award text-yellow-500 mt-1 mr-2"></i>
-                  <div>
-                    <span
-                      >Programming and Web Developing with ReactJS (MFT)</span
-                    >
-                    <p class="text-sm text-gray-500">2021</p>
-                  </div>
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-award text-yellow-500 mt-1 mr-2"></i>
-                  <div>
-                    <span
-                      >Programming in HTML5 with JavaScript and CSS3 (MFT)</span
-                    >
-                    <p class="text-sm text-gray-500">2020</p>
-                  </div>
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-award text-yellow-500 mt-1 mr-2"></i>
-                  <div>
-                    <span
-                      >Microsoft Certified Solutions Associate (MCSA)
-                      (MFT)</span
-                    >
-                    <p class="text-sm text-gray-500">2019</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="section-divider"></div>
-
-      <!-- Contact Section -->
-      <section class="py-16 apple-dark" id="contact">
-        <div class="container mx-auto px-4">
-          <div class="max-w-3xl mx-auto">
-            <div class="mt-12 text-center">
-              <h2 class="text-xl font-semibold mb-4">Reach me directly at</h2>
-              <div class="flex justify-center space-x-6">
-                <a
-                  class="minimal-contact-btn text-2xl"
-                  href="https://www.linkedin.com/in/erfan-hamidi-657256223"
-                  target="_blank"
-                >
-                  <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a
-                  class="minimal-contact-btn text-2xl"
-                  href="https://github.com/erfanhm"
-                  target="_blank"
-                >
-                  <i class="fab fa-github"></i>
-                </a>
-                <a
-                  class="minimal-contact-btn text-2xl"
-                  href="mailto:erfanhamidi077@gmail.com"
-                >
-                  <i class="fas fa-envelope"></i>
-                </a>
-                <a class="minimal-contact-btn text-2xl" href="tel:2265069635">
-                  <i class="fas fa-phone"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Footer -->
-      <footer class="py-6 apple-dark">
-        <div class="container mx-auto px-4 text-center">
-          <p>© 2024 Erfan Hamidi. All rights reserved.</p>
-        </div>
-      </footer>
+      <div class="card about-card reveal delay-1">
+        <p>Backend Engineer & AI Integration specialist focused on designing scalable distributed systems and intelligent automation pipelines. I build high-concurrency backend services using Java, Node.js, and Python — architecting RESTful APIs, JWT-secured microservices, and event-driven architectures that hold up under real production load.</p>
+        <p>I architect and optimize PostgreSQL databases through structured schema design, advanced indexing, and execution-plan tuning. I integrate LLM-powered workflows and AI-driven APIs — including OCR pipelines, RAG systems, and OpenAI/LangChain integrations — transforming unstructured inputs into production-ready backend services.</p>
+        <p>On the infrastructure side I deploy and manage cloud-native applications on AWS (EC2, RDS, S3, Lambda), implement containerized microservices with Docker/Kubernetes, and build automated CI/CD pipelines for reliable, scalable delivery at scale.</p>
+      </div>
     </div>
+  </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- SKILLS -->
+  <section id="skills" class="section skills-section">
+    <div class="skills-bg" aria-hidden="true"></div>
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title reveal">Skills &amp; Expertise</h2>
+        <p class="section-subtitle reveal delay-1">A comprehensive toolkit for building modern, scalable applications</p>
+      </div>
+      <div class="skills-grid">
+        <div class="card reveal delay-1">
+          <div class="skill-icon-wrap"><i class="fas fa-code"></i></div>
+          <h3 class="skill-category-title">Languages &amp; Backend</h3>
+          <p class="skill-sub-title">Languages</p>
+          <div class="skill-pills mb-sm">
+            <span class="skill-pill">Java</span>
+            <span class="skill-pill">JavaScript</span>
+            <span class="skill-pill">Node.js</span>
+            <span class="skill-pill">Python</span>
+          </div>
+          <p class="skill-sub-title">Frameworks</p>
+          <div class="skill-pills mb-sm">
+            <span class="skill-pill">Django</span>
+            <span class="skill-pill">FastAPI</span>
+            <span class="skill-pill">Express.js</span>
+            <span class="skill-pill">NestJS</span>
+          </div>
+          <p class="skill-sub-title">API &amp; Architecture</p>
+          <div class="skill-pills">
+            <span class="skill-pill">RESTful APIs</span>
+            <span class="skill-pill">GraphQL</span>
+            <span class="skill-pill">JWT Auth</span>
+            <span class="skill-pill">Microservices</span>
+            <span class="skill-pill">WebSockets</span>
+          </div>
+        </div>
+        <div class="card reveal delay-2">
+          <div class="skill-icon-wrap"><i class="fas fa-database"></i></div>
+          <h3 class="skill-category-title">Databases, Cloud &amp; DevOps</h3>
+          <p class="skill-sub-title">Databases</p>
+          <div class="skill-pills mb-sm">
+            <span class="skill-pill">PostgreSQL</span>
+            <span class="skill-pill">SQL Server</span>
+            <span class="skill-pill">BigQuery</span>
+            <span class="skill-pill">Redis</span>
+          </div>
+          <p class="skill-sub-title">Cloud &amp; Infrastructure</p>
+          <div class="skill-pills mb-sm">
+            <span class="skill-pill">AWS EC2</span>
+            <span class="skill-pill">AWS RDS</span>
+            <span class="skill-pill">AWS S3</span>
+            <span class="skill-pill">Lambda</span>
+            <span class="skill-pill">Docker</span>
+            <span class="skill-pill">Kubernetes</span>
+          </div>
+          <p class="skill-sub-title">CI/CD &amp; Practices</p>
+          <div class="skill-pills">
+            <span class="skill-pill">GitLab CI/CD</span>
+            <span class="skill-pill">GitHub Actions</span>
+            <span class="skill-pill">BullMQ</span>
+            <span class="skill-pill">RabbitMQ</span>
+          </div>
+        </div>
+        <div class="card reveal delay-3">
+          <div class="skill-icon-wrap"><i class="fas fa-robot"></i></div>
+          <h3 class="skill-category-title">AI &amp; Integration</h3>
+          <p class="skill-sub-title">AI &amp; Automation</p>
+          <div class="skill-pills mb-sm">
+            <span class="skill-pill">LLM Integration</span>
+            <span class="skill-pill">OpenAI API</span>
+            <span class="skill-pill">LangChain</span>
+            <span class="skill-pill">RAG</span>
+            <span class="skill-pill">Vector DBs</span>
+            <span class="skill-pill">OCR Pipelines</span>
+            <span class="skill-pill">Prompt Engineering</span>
+          </div>
+          <p class="skill-sub-title">Frontend Integration</p>
+          <div class="skill-pills mb-sm">
+            <span class="skill-pill">React.js</span>
+            <span class="skill-pill">React Native</span>
+            <span class="skill-pill">Next.js</span>
+          </div>
+          <p class="skill-sub-title">Engineering Practices</p>
+          <div class="skill-pills">
+            <span class="skill-pill">TDD</span>
+            <span class="skill-pill">Unit Testing</span>
+            <span class="skill-pill">E2E Testing</span>
+            <span class="skill-pill">Performance Monitoring</span>
+            <span class="skill-pill">Agile</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    
-      <script src="script.js"></script>
-  </body>
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section experience-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title reveal">Experience</h2>
+        <p class="section-subtitle reveal delay-1">My professional journey and career milestones</p>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="card">
+            <div class="timeline-header">
+              <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
+              <div class="timeline-info">
+                <h3>AI-Driven Full Stack Software Engineer</h3>
+                <p class="company">University of Windsor &nbsp;·&nbsp; Windsor, Canada</p>
+                <p class="period">Dec 2025 – Present</p>
+              </div>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Architect scalable backend systems integrating LLM APIs and automation workflows, processing structured and unstructured data within intelligent enrichment pipelines using Java and Node.js.</li>
+              <li>Design and optimize PostgreSQL schema architecture, reducing API response latency by 30% under production workloads through advanced indexing, query optimization, and execution-plan tuning.</li>
+              <li>Develop and secure RESTful APIs handling 1,000+ concurrent requests with JWT authentication and rate limiting across distributed services.</li>
+              <li>Improved OCR extraction accuracy from 82% to 94% by combining AWS Textract with EasyOCR, OpenCV preprocessing, and LLM-powered post-processing with Pydantic validation and fuzzy matching.</li>
+              <li>Deploy and manage AWS infrastructure (EC2, RDS, S3, Lambda) with CloudWatch monitoring and Redis caching, and build CI/CD pipelines with GitHub Actions, Jest, JUnit, and Docker/Kubernetes.</li>
+            </ul>
+            <div class="highlight-pills">
+              <span class="highlight-pill">Java</span>
+              <span class="highlight-pill">Node.js</span>
+              <span class="highlight-pill">LLM Integration</span>
+              <span class="highlight-pill">PostgreSQL</span>
+              <span class="highlight-pill">AWS</span>
+              <span class="highlight-pill">OCR Pipeline</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal delay-1">
+          <div class="timeline-dot"></div>
+          <div class="card">
+            <div class="timeline-header">
+              <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
+              <div class="timeline-info">
+                <h3>Full Stack Web Developer</h3>
+                <p class="company">Erfan Hamidi Consulting &nbsp;·&nbsp; Windsor, Ontario, Canada</p>
+                <p class="period">Nov 2024 – Sept 2025</p>
+              </div>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Developed secure RESTful and GraphQL APIs supporting client workloads with JWT authentication and API versioning, following established architectural patterns.</li>
+              <li>Optimized PostgreSQL queries through indexing strategies and performance analysis, improving execution speed and transactional reliability under load.</li>
+              <li>Implemented asynchronous background processing using BullMQ and message queues (RabbitMQ, AWS SQS) for long-running operations and improved system throughput.</li>
+              <li>Built reusable backend service modules following microservices patterns with standardized logging to support multi-client scalability.</li>
+              <li>Developed and maintained CI/CD pipelines using GitHub Actions and GitLab CI with automated testing (Jest, Maestro) for controlled production deployments.</li>
+            </ul>
+            <div class="highlight-pills">
+              <span class="highlight-pill">Node.js</span>
+              <span class="highlight-pill">NestJS</span>
+              <span class="highlight-pill">GraphQL</span>
+              <span class="highlight-pill">BullMQ</span>
+              <span class="highlight-pill">Redis</span>
+              <span class="highlight-pill">AWS / GCP</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal delay-2">
+          <div class="timeline-dot"></div>
+          <div class="card">
+            <div class="timeline-header">
+              <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
+              <div class="timeline-info">
+                <h3>Full Stack Developer</h3>
+                <p class="company">Soodbar Co. &nbsp;·&nbsp; Tehran, Iran</p>
+                <p class="period">Dec 2021 – May 2023</p>
+              </div>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Developed and maintained secure RESTful API architecture with JWT authentication enabling stable service-to-service communication across distributed applications.</li>
+              <li>Optimized SQL execution plans and indexing strategies, improving database throughput by 28% under sustained production load.</li>
+              <li>Refactored backend modules to reduce technical debt and strengthen extensibility across evolving system requirements.</li>
+              <li>Diagnosed and resolved production incidents through structured root cause analysis using logs, telemetry, and performance metrics.</li>
+            </ul>
+            <div class="highlight-pills">
+              <span class="highlight-pill">RESTful APIs</span>
+              <span class="highlight-pill">JWT Auth</span>
+              <span class="highlight-pill">SQL Optimization</span>
+              <span class="highlight-pill">Agile</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal delay-3">
+          <div class="timeline-dot"></div>
+          <div class="card">
+            <div class="timeline-header">
+              <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
+              <div class="timeline-info">
+                <h3>Software Developer (Internship)</h3>
+                <p class="company">Delphi Automotive &nbsp;·&nbsp; Tehran, Iran</p>
+                <p class="period">Jan 2019 – Jul 2019</p>
+              </div>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Developed secure RESTful backend APIs and internal enterprise tools supporting transactional eCommerce workflows and structured data validation.</li>
+              <li>Designed and optimized SQL database schemas with indexing strategies and query refinement to improve execution efficiency and transactional reliability.</li>
+              <li>Built operational dashboards monitoring system health, performance metrics, and workflow indicators to support engineering decisions.</li>
+            </ul>
+            <div class="highlight-pills">
+              <span class="highlight-pill">Python</span>
+              <span class="highlight-pill">JavaScript</span>
+              <span class="highlight-pill">SQL</span>
+              <span class="highlight-pill">Dashboards</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section education-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title reveal">Education &amp; Certifications</h2>
+        <p class="section-subtitle reveal delay-1">Academic background and professional certifications</p>
+      </div>
+      <div class="education-grid">
+        <div class="education-cards">
+          <div class="card reveal">
+            <div class="edu-header">
+              <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+              <div class="edu-info">
+                <h3>Master of Electrical Computer Engineering</h3>
+                <p class="institution">University of Windsor, Canada</p>
+                <p class="period">2023 – 2024</p>
+              </div>
+            </div>
+            <div class="highlight-pills">
+              <span class="highlight-pill">Graduate Studies</span>
+              <span class="highlight-pill">Computer Engineering</span>
+            </div>
+          </div>
+          <div class="card reveal delay-1">
+            <div class="edu-header">
+              <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+              <div class="edu-info">
+                <h3>Bachelor of Science, Software Engineering</h3>
+                <p class="institution">Azad University of Tehran Central, Iran</p>
+                <p class="period">2019 – 2022</p>
+              </div>
+            </div>
+            <div class="highlight-pills">
+              <span class="highlight-pill">Software Engineering</span>
+              <span class="highlight-pill">B.Sc.</span>
+            </div>
+          </div>
+        </div>
+        <div class="card cert-card reveal delay-2">
+          <div class="cert-header">
+            <div class="edu-icon"><i class="fas fa-certificate"></i></div>
+            <h3>Certifications</h3>
+          </div>
+          <div class="cert-list">
+            <div class="cert-item">
+              <div class="cert-dot"></div>
+              <div>
+                <div class="cert-text">Certified SQL Practitioner (Udemy)</div>
+                <div class="cert-year">2025</div>
+              </div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-dot"></div>
+              <div>
+                <div class="cert-text">Certificate in Python Programming (MFT)</div>
+                <div class="cert-year">2021</div>
+              </div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-dot"></div>
+              <div>
+                <div class="cert-text">Web Developing with ReactJS (MFT)</div>
+                <div class="cert-year">2021</div>
+              </div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-dot"></div>
+              <div>
+                <div class="cert-text">HTML5 with JavaScript and CSS3 (MFT)</div>
+                <div class="cert-year">2020</div>
+              </div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-dot"></div>
+              <div>
+                <div class="cert-text">Microsoft Certified Solutions Associate (MCSA)</div>
+                <div class="cert-year">2019</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title reveal contact-title">Get In Touch</h2>
+        <p class="section-subtitle reveal delay-1 contact-subtitle">Let's discuss your next project or opportunity. I'm always open to new challenges.</p>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-links reveal delay-2">
+          <a href="https://www.linkedin.com/in/erfan-hamidi-657256223" target="_blank" class="contact-link-btn" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/erfanhm" target="_blank" class="contact-link-btn" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="mailto:erfanhamidi077@gmail.com" class="contact-link-btn" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="tel:2265069635" class="contact-link-btn" aria-label="Phone">
+            <i class="fas fa-phone"></i>
+          </a>
+        </div>
+        <div class="availability-badge reveal delay-3">
+          <div class="avail-pulse"></div>
+          <p class="avail-title">Available for new opportunities</p>
+          <p class="avail-sub">Let's build something amazing together</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2024 Erfan Hamidi. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>

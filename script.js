@@ -1,178 +1,250 @@
-// ── Cyberpunk Aurora Loader ──
-      (function () {
-        const loader       = document.getElementById("loader");
-        const nameEl       = document.getElementById("loaderName");
-        const taglineEl    = document.getElementById("loaderTagline");
-        const progressFill = document.getElementById("progressFill");
-        const progressPct  = document.getElementById("progressPct");
-        const canvas       = document.getElementById("loaderCanvas");
-        const ctx          = canvas.getContext("2d");
+// ── Terminal Loader ──
+(function () {
+  const loader    = document.getElementById("loader");
+  const termBody  = document.getElementById("termBody");
+  const barFill   = document.getElementById("termBarFill");
+  const pctEl     = document.getElementById("termPct");
 
-        // Size canvas
-        canvas.width  = window.innerWidth;
-        canvas.height = window.innerHeight;
+  const LINES = [
+    { type: "cmd",  text: "erfan --init portfolio" },
+    { type: "gap" },
+    { type: "proc", text: "Brewing required coffee",           result: "☕  done" },
+    { type: "proc", text: "Closing 247 browser tabs",          result: "✓" },
+    { type: "proc", text: "npm install self-confidence",       result: "1 package added ✓" },
+    { type: "proc", text: "Questioning life choices",          result: "✓  (normal, carry on)" },
+    { type: "proc", text: "docker-compose up portfolio",       result: "✓  port 3000 ready" },
+    { type: "ok",   text: "Compilation successful.  Welcome." },
+  ];
 
-        // Floating particles
-        const COLORS = ["#00d4ff", "#8b00ff", "#00ffcc", "#ff00cc"];
-        const particles = Array.from({ length: 90 }, () => ({
-          x:     Math.random() * canvas.width,
-          y:     Math.random() * canvas.height,
-          r:     Math.random() * 1.6 + 0.3,
-          vx:    (Math.random() - 0.5) * 0.35,
-          vy:    -(Math.random() * 0.45 + 0.1),
-          alpha: Math.random() * 0.55 + 0.1,
-          color: COLORS[Math.floor(Math.random() * COLORS.length)],
-        }));
+  const DELAYS = [0, 350, 460, 810, 1175, 1550, 1900, 2550];
 
-        let rafId;
-        function drawParticles() {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          particles.forEach(p => {
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = p.color;
-            ctx.globalAlpha = p.alpha;
-            ctx.fill();
-            p.x += p.vx;
-            p.y += p.vy;
-            if (p.y < -5)               { p.y = canvas.height + 5; p.x = Math.random() * canvas.width; }
-            if (p.x < -5)               p.x = canvas.width + 5;
-            if (p.x > canvas.width + 5) p.x = -5;
-          });
-          ctx.globalAlpha = 1;
-          rafId = requestAnimationFrame(drawParticles);
+  let activeCursor = null;
+
+  function addLine(lineObj) {
+    if (lineObj.type === "gap") {
+      const s = document.createElement("span");
+      s.className = "term-spacer";
+      termBody.appendChild(s);
+      return;
+    }
+
+    const div = document.createElement("div");
+    div.className = "term-line";
+
+    const pre = document.createElement("span");
+    if (lineObj.type === "cmd") {
+      div.classList.add("term-line-cmd");
+      pre.className = "term-prompt";
+      pre.textContent = "$ ";
+    } else if (lineObj.type === "proc") {
+      div.classList.add("term-line-proc");
+      pre.className = "term-arrow";
+      pre.textContent = ">  ";
+    } else {
+      div.classList.add("term-line-ok");
+      pre.className = "term-prompt";
+      pre.textContent = "✓  ";
+    }
+    div.appendChild(pre);
+
+    const txt = document.createElement("span");
+    div.appendChild(txt);
+
+    const cur = document.createElement("span");
+    cur.className = "term-cursor";
+    div.appendChild(cur);
+
+    if (activeCursor) activeCursor.remove();
+    activeCursor = cur;
+
+    termBody.appendChild(div);
+    termBody.scrollTop = termBody.scrollHeight;
+
+    const fullText = lineObj.type === "proc" ? lineObj.text + "..." : lineObj.text;
+    let i = 0;
+
+    const iv = setInterval(() => {
+      txt.textContent += fullText[i++];
+      if (i >= fullText.length) {
+        clearInterval(iv);
+        cur.remove();
+        if (activeCursor === cur) activeCursor = null;
+        if (lineObj.result) {
+          const res = document.createElement("span");
+          res.className = "term-result";
+          res.textContent = "  " + lineObj.result;
+          div.appendChild(res);
         }
-        drawParticles();
-
-        // Typewriter helper
-        function typeText(el, text, speed, cb) {
-          let i = 0;
-          el.textContent = "";
-          const t = setInterval(() => {
-            el.textContent += text[i++];
-            if (i >= text.length) { clearInterval(t); if (cb) cb(); }
-          }, speed);
+        if (lineObj.type === "ok") {
+          const finalCur = document.createElement("span");
+          finalCur.className = "term-cursor";
+          div.appendChild(finalCur);
         }
+      }
+    }, 17);
+  }
 
-        // Animated progress counter
-        let pct = 0;
-        const pctInterval = setInterval(() => {
-          pct = Math.min(pct + Math.floor(Math.random() * 5) + 1, 100);
-          progressFill.style.width = pct + "%";
-          progressPct.textContent  = pct + "%";
-          if (pct >= 100) clearInterval(pctInterval);
-        }, 38);
+  let pct = 0;
+  const pctInterval = setInterval(() => {
+    pct = Math.min(pct + Math.floor(Math.random() * 4) + 1, 100);
+    barFill.style.width = pct + "%";
+    pctEl.textContent   = pct + "%";
+    if (pct >= 100) clearInterval(pctInterval);
+  }, 38);
 
-        // Sequence
-        setTimeout(() => typeText(nameEl,    "ERFAN.HM", 85), 250);
-        setTimeout(() => typeText(taglineEl, "PORTFOLIO  •  DEVELOPER  •  DESIGNER", 30), 1050);
+  LINES.forEach((line, i) => setTimeout(() => addLine(line), DELAYS[i]));
 
-        // Fade out loader
-        setTimeout(() => {
-          cancelAnimationFrame(rafId);
-          loader.style.opacity = "0";
-          setTimeout(() => { loader.style.display = "none"; }, 600);
-        }, 3900);
-      })();
+  setTimeout(() => {
+    loader.style.opacity = "0";
+    setTimeout(() => {
+      loader.style.display = "none";
+      initReveal();
+      initNavTracking();
+      initBgCanvas();
+    }, 600);
+  }, 3900);
+})();
 
-      // Hamburger menu functionality
-      const hamburger = document.getElementById("hamburger");
-      const sidebarMenu = document.getElementById("sidebarMenu");
-      const menuOverlay = document.getElementById("menuOverlay");
+// ── Scroll Reveal ──
+function initReveal() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
 
-      hamburger.addEventListener("click", function () {
-        this.classList.toggle("open");
-        sidebarMenu.classList.toggle("open");
-        menuOverlay.classList.toggle("active");
+  document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+}
 
-        // Toggle body overflow when menu is open
-        if (sidebarMenu.classList.contains("open")) {
-          document.body.style.overflow = "hidden";
-        } else {
-          document.body.style.overflow = "";
+// ── Active Nav Link Tracking ──
+function initNavTracking() {
+  const sections = ["hero", "about", "skills", "experience", "education", "contact"];
+  const navLinks = document.querySelectorAll(".nav-link");
+  const scrollIndicator = document.getElementById("scrollIndicator");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+          link.classList.toggle("active", link.dataset.section === id);
+        });
+        if (scrollIndicator) {
+          scrollIndicator.classList.toggle("hidden", id !== "hero");
         }
-      });
+      }
+    });
+  }, { threshold: 0.4 });
 
-      // Close menu when clicking on overlay
-      menuOverlay.addEventListener("click", function () {
-        hamburger.classList.remove("open");
-        sidebarMenu.classList.remove("open");
-        this.classList.remove("active");
-        document.body.style.overflow = "";
-      });
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+}
 
-      // Close menu when clicking on a link (for mobile)
-      const menuLinks = document.querySelectorAll(".sidebar-menu a");
-      menuLinks.forEach((link) => {
-        link.addEventListener("click", function () {
-          hamburger.classList.remove("open");
-          sidebarMenu.classList.remove("open");
-          menuOverlay.classList.remove("active");
-          document.body.style.overflow = "";
-        });
-      });
+// ── Smooth Scroll ──
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function (e) {
+    const targetId = this.getAttribute("href");
+    const target = document.querySelector(targetId);
+    if (target) {
+      e.preventDefault();
+      const navHeight = document.getElementById("mainNav").offsetHeight;
+      window.scrollTo({ top: target.offsetTop - navHeight, behavior: "smooth" });
+    }
+  });
+});
 
-      // Form submission
-      document
-        .getElementById("contactForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
+// ── Hamburger Menu ──
+const hamburger   = document.getElementById("hamburger");
+const sidebarMenu = document.getElementById("sidebarMenu");
+const menuOverlay = document.getElementById("menuOverlay");
 
-          const name = document.getElementById("name").value;
-          const email = document.getElementById("email").value;
-          const subject = document.getElementById("subject").value;
-          const message = document.getElementById("message").value;
+function closeSidebar() {
+  hamburger.classList.remove("open");
+  sidebarMenu.classList.remove("open");
+  menuOverlay.classList.remove("active");
+  document.body.style.overflow = "";
+}
 
-          // In a real implementation, you would send this data to a server
-          // For this example, we'll just log it and show an alert
-          console.log({ name, email, subject, message });
+hamburger.addEventListener("click", function () {
+  this.classList.toggle("open");
+  sidebarMenu.classList.toggle("open");
+  menuOverlay.classList.toggle("active");
+  document.body.style.overflow = sidebarMenu.classList.contains("open") ? "hidden" : "";
+});
 
-          // Construct mailto link
-          const mailtoLink = `mailto:erfanhamidi077@gmail.com?subject=${encodeURIComponent(
-            subject
-          )}&body=${encodeURIComponent(
-            `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-          )}`;
+menuOverlay.addEventListener("click", closeSidebar);
 
-          // Open mail client
-          window.location.href = mailtoLink;
+document.querySelectorAll(".sidebar-menu a").forEach(link => {
+  link.addEventListener("click", closeSidebar);
+});
 
-          // Show success message
-          alert(
-            "Your message has been prepared in your email client. Please send it to complete the process."
-          );
+// ── Scroll Indicator click ──
+const scrollIndicator = document.getElementById("scrollIndicator");
+if (scrollIndicator) {
+  scrollIndicator.addEventListener("click", () => {
+    const about = document.getElementById("about");
+    if (about) about.scrollIntoView({ behavior: "smooth" });
+  });
+}
 
-          // Reset form
-          this.reset();
-        });
+// ── Hero background canvas – rising code chars ──
+function initBgCanvas() {
+  const canvas = document.getElementById("bgCanvas");
+  if (!canvas) return;
+  const ctx  = canvas.getContext("2d");
+  const hero = canvas.parentElement;
 
-      // Button hover effects
-      const buttons = document.querySelectorAll(".btn-hover-effect");
-      buttons.forEach((button) => {
-        button.addEventListener("mouseenter", function () {
-          this.style.transform = "scale(1.05)";
-          this.style.boxShadow = "0 10px 20px rgba(0, 0, 0, 0.1)";
-        });
+  function resize() {
+    canvas.width  = hero.offsetWidth;
+    canvas.height = hero.offsetHeight;
+  }
+  resize();
+  window.addEventListener("resize", resize);
 
-        button.addEventListener("mouseleave", function () {
-          this.style.transform = "scale(1)";
-          this.style.boxShadow = "none";
-        });
-      });
+  const CHARS  = [">", "_", "{", "}", "$", "#", "0", "1", "=>", "()", "[]", "//", "&&", "fn"];
+  const COLORS = [
+    "rgba(99,102,241,",
+    "rgba(139,92,246,",
+    "rgba(6,182,212,",
+    "rgba(74,222,128,",
+  ];
 
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
+  function mkParticle(randomY) {
+    const h = canvas.height || 800;
+    const w = canvas.width  || 1200;
+    return {
+      x:     Math.random() * w,
+      y:     randomY ? Math.random() * h : h + 20,
+      vy:    -(Math.random() * 0.3 + 0.1),
+      vx:    (Math.random() - 0.5) * 0.06,
+      size:  Math.random() < 0.5 ? 11 : 13,
+      char:  CHARS[Math.floor(Math.random() * CHARS.length)],
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      alpha: Math.random() * 0.07 + 0.025,
+      phase: Math.random() * Math.PI * 2,
+      speed: Math.random() * 0.007 + 0.003,
+    };
+  }
 
-          const targetId = this.getAttribute("href");
-          const targetElement = document.querySelector(targetId);
+  const particles = Array.from({ length: 55 }, () => mkParticle(true));
 
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: "smooth",
-            });
-          }
-        });
-      });
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      p.y     += p.vy;
+      p.x     += p.vx;
+      p.phase += p.speed;
+      const a  = p.alpha * (0.5 + 0.5 * Math.sin(p.phase));
+      ctx.font      = `${p.size}px 'Courier New',monospace`;
+      ctx.fillStyle = p.color + a.toFixed(3) + ")";
+      ctx.fillText(p.char, p.x, p.y);
+      if (p.y < -20) Object.assign(p, mkParticle(false));
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
