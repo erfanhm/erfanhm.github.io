@@ -259,11 +259,12 @@ body {
 .hero-content {
   position: relative; z-index: 1;
   max-width: 1100px; margin: 0 auto; width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 72px;
 }
-.hero-content--no-portrait { max-width: 720px; text-align: center; }
 .hero-text { text-align: left; }
-.hero-content--no-portrait .hero-text { text-align: center; }
-.hero-content--no-portrait .hero-socials { justify-content: center; }
 
 .open-to-work-badge {
   display: inline-block;
@@ -302,6 +303,44 @@ body {
   margin-bottom: 36px;
 }
 .hero-socials { display: flex; gap: 16px; justify-content: flex-start; flex-wrap: wrap; }
+
+/* ── Hero portrait ── */
+.hero-portrait { flex-shrink: 0; display: flex; justify-content: center; }
+.hero-avatar-ring {
+  position: relative;
+  width: 248px; height: 308px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 45%, #06b6d4 100%);
+  box-shadow: 0 24px 64px rgba(99,102,241,0.28), 0 8px 24px rgba(0,0,0,0.1);
+  animation: heroFloat 5s ease-in-out infinite;
+}
+.hero-avatar-ring::before {
+  content: '';
+  position: absolute; inset: -6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4, #6366f1);
+  background-size: 300% 300%;
+  opacity: 0.25;
+  filter: blur(12px);
+  animation: ringGlow 4s ease-in-out infinite;
+  z-index: -1;
+}
+@keyframes ringGlow {
+  0%,100% { background-position: 0% 50%; opacity: 0.25; }
+  50%      { background-position: 100% 50%; opacity: 0.45; }
+}
+.hero-avatar {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 10%;
+  display: block;
+}
+@keyframes heroFloat {
+  0%,100% { transform: translateY(0px); }
+  50%      { transform: translateY(-14px); }
+}
 
 .social-icon-btn {
   display: flex; align-items: center; justify-content: center;
@@ -553,6 +592,15 @@ body {
   .blob { width: 280px; height: 280px; }
   .hero-title { font-size: 2.4rem; }
   .section { padding: 80px 16px; }
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+  .hero-text { text-align: center; }
+  .hero-portrait { order: -1; }
+  .hero-avatar-ring { width: 180px; height: 224px; }
+  .hero-socials { justify-content: center; }
 }
 @media (max-width: 480px) {
   .hero-socials { gap: 12px; }
