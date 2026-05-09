@@ -1,3 +1,95 @@
+// ── Constellation Background ──
+(function () {
+  const canvas = document.getElementById("constellationCanvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+
+  const PALETTE = [
+    [99,  102, 241],
+    [139, 92,  246],
+    [6,   182, 212],
+    [74,  222, 128],
+  ];
+
+  let W, H, particles;
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function mkParticle() {
+    const c = PALETTE[Math.floor(Math.random() * PALETTE.length)];
+    return {
+      x:     Math.random() * W,
+      y:     Math.random() * H,
+      vx:    (Math.random() - 0.5) * 0.28,
+      vy:    (Math.random() - 0.5) * 0.28,
+      r:     Math.random() * 1.4 + 0.5,
+      color: c,
+      alpha: Math.random() * 0.35 + 0.12,
+      phase: Math.random() * Math.PI * 2,
+      pspd:  Math.random() * 0.007 + 0.003,
+    };
+  }
+
+  function build() {
+    const count = Math.min(Math.floor((W * H) / 13000), 95);
+    particles = Array.from({ length: count }, mkParticle);
+  }
+
+  resize();
+  build();
+  window.addEventListener("resize", () => { resize(); build(); });
+
+  const MAX_DIST = 165;
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    for (let i = 0; i < particles.length; i++) {
+      const a = particles[i];
+      for (let j = i + 1; j < particles.length; j++) {
+        const b  = particles[j];
+        const dx = a.x - b.x, dy = a.y - b.y;
+        const d  = Math.sqrt(dx * dx + dy * dy);
+        if (d >= MAX_DIST) continue;
+        const op = (1 - d / MAX_DIST) * 0.055;
+        const cr = (a.color[0] + b.color[0]) >> 1;
+        const cg = (a.color[1] + b.color[1]) >> 1;
+        const cb = (a.color[2] + b.color[2]) >> 1;
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(${cr},${cg},${cb},${op})`;
+        ctx.lineWidth   = 0.6;
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      }
+    }
+
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+      p.x = Math.max(0, Math.min(W, p.x));
+      p.y = Math.max(0, Math.min(H, p.y));
+
+      p.phase += p.pspd;
+      const a = p.alpha * (0.55 + 0.45 * Math.sin(p.phase));
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r + Math.sin(p.phase) * 0.5, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.color[0]},${p.color[1]},${p.color[2]},${a})`;
+      ctx.fill();
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+})();
+
 // ── Terminal Loader ──
 (function () {
   const loader    = document.getElementById("loader");
