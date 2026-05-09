@@ -667,3 +667,125 @@ body {
   .hero-socials { gap: 12px; }
   .social-icon-btn { width: 46px; height: 46px; font-size: 18px; }
 }
+
+/* ═══════════════════════════════════════════════════════
+   COLORS & INTERACTIVITY
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Hero section colors ── */
+.hero-title {
+  background: linear-gradient(135deg, #e0e7ff 0%, #a5b4fc 35%, #8b5cf6 70%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: unset;
+}
+.hero-subtitle { color: rgba(255,255,255,0.62); }
+.hero-location { color: rgba(255,255,255,0.35); }
+
+/* Social buttons – brand colors on hover */
+.hero-socials a.social-icon-btn:nth-child(1):hover { background: #0077b5; color: #fff; border-color: #0077b5; }
+.hero-socials a.social-icon-btn:nth-child(2):hover { background: #24292e; color: #fff; border-color: #24292e; }
+.hero-socials a.social-icon-btn:nth-child(3):hover { background: #ea4335; color: #fff; border-color: #ea4335; }
+.hero-socials a.social-icon-btn:nth-child(4):hover { background: #6366f1; color: #fff; border-color: #6366f1; }
+
+/* Scroll indicator colored */
+.scroll-indicator { color: #8b5cf6; }
+
+/* ── About card – gradient top border ── */
+.about-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6, #06b6d4);
+  border-radius: 16px 16px 0 0;
+}
+
+/* ── Section titles – gradient ── */
+.section-title {
+  background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 60%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: unset;
+}
+.contact-title {
+  background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Skills – per-category color accents ── */
+.skills-grid .card:nth-child(1) { border-top: 3px solid #6366f1; }
+.skills-grid .card:nth-child(2) { border-top: 3px solid #8b5cf6; }
+.skills-grid .card:nth-child(3) { border-top: 3px solid #06b6d4; }
+
+.skills-grid .card:nth-child(1) .skill-icon-wrap { background: rgba(99,102,241,0.12); color: #6366f1; }
+.skills-grid .card:nth-child(2) .skill-icon-wrap { background: rgba(139,92,246,0.12); color: #8b5cf6; }
+.skills-grid .card:nth-child(3) .skill-icon-wrap { background: rgba(6,182,212,0.12);  color: #06b6d4; }
+
+.skills-grid .card:nth-child(1) .skill-category-title { color: #818cf8; }
+.skills-grid .card:nth-child(2) .skill-category-title { color: #a78bfa; }
+.skills-grid .card:nth-child(3) .skill-category-title { color: #22d3ee; }
+
+.skills-grid .card:nth-child(1) .skill-pill { background: rgba(99,102,241,0.08); color: #4f46e5; border: 1px solid rgba(99,102,241,0.18); }
+.skills-grid .card:nth-child(2) .skill-pill { background: rgba(139,92,246,0.08); color: #7c3aed; border: 1px solid rgba(139,92,246,0.18); }
+.skills-grid .card:nth-child(3) .skill-pill { background: rgba(6,182,212,0.08);  color: #0891b2; border: 1px solid rgba(6,182,212,0.18);  }
+.skills-grid .card:nth-child(1) .skill-pill:hover { background: rgba(99,102,241,0.16); transform: scale(1.08); }
+.skills-grid .card:nth-child(2) .skill-pill:hover { background: rgba(139,92,246,0.16); transform: scale(1.08); }
+.skills-grid .card:nth-child(3) .skill-pill:hover { background: rgba(6,182,212,0.16);  transform: scale(1.08); }
+
+/* ── Experience timeline colors ── */
+.timeline-dot {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-color: #0d0d18;
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.25);
+}
+.timeline-icon { background: rgba(99,102,241,0.15); color: #818cf8; }
+.highlight-pill {
+  background: rgba(99,102,241,0.14);
+  color: #a5b4fc;
+  border: 1px solid rgba(99,102,241,0.22);
+}
+.timeline-item .card::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 15%; bottom: 15%;
+  width: 3px;
+  background: linear-gradient(180deg, #6366f1, #8b5cf6);
+  border-radius: 0 3px 3px 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.timeline-item .card:hover::after { opacity: 1; }
+
+/* ── Education colors ── */
+.edu-icon { background: rgba(99,102,241,0.15); color: #818cf8; }
+.cert-card .cert-header .edu-icon { background: rgba(16,185,129,0.15); color: #34d399; }
+.cert-dot { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+.cert-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+.cert-item:hover {
+  background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(139,92,246,0.08));
+  border-color: rgba(99,102,241,0.25);
+}
+.cert-text { color: rgba(255,255,255,0.72); }
+.cert-year { color: rgba(255,255,255,0.35); }
+
+/* ── Contact colors ── */
+.contact-link-btn { border-color: rgba(99,102,241,0.2); }
+.contact-link-btn:hover {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-color: transparent;
+  color: #fff;
+}
+.availability-badge {
+  background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(139,92,246,0.04));
+  border-color: rgba(99,102,241,0.18);
+}
+.avail-title { color: #a5b4fc; }
+.avail-sub   { color: rgba(165,180,252,0.6); }
